@@ -87,6 +87,9 @@ Class WPOA {
 		'wpoa_facebook_api_enabled' => 0,								// 0, 1
 		'wpoa_facebook_api_id' => '',									// any string
 		'wpoa_facebook_api_secret' => '',								// any string
+		'wpoa_qilian_api_enabled' => 0,								// 0, 1
+		'wpoa_qilian_api_id' => '',									// any string
+		'wpoa_qilian_api_secret' => '',								// any string
 		'wpoa_linkedin_api_enabled' => 0,								// 0, 1
 		'wpoa_linkedin_api_id' => '',									// any string
 		'wpoa_linkedin_api_secret' => '',								// any string
@@ -413,7 +416,7 @@ Class WPOA {
 		// store the user info in the user session so we can grab it later if we need to register the user:
 		$_SESSION["WPOA"]["USER_ID"] = $oauth_identity["id"];
 		// try to find a matching wordpress user for the now-authenticated user's oauth identity:
-		$matched_user = $this->wpoa_match_wordpress_user($oauth_identity);
+    $matched_user = $this->wpoa_match_wordpress_user($oauth_identity);
 		// handle the matched user if there is one:
 		if ( $matched_user ) {
 			// there was a matching wordpress user account, log it in now:
@@ -726,6 +729,7 @@ Class WPOA {
 		$html .= $this->wpoa_login_button("facebook", "Facebook", $atts);
 		$html .= $this->wpoa_login_button("linkedin", "LinkedIn", $atts);
 		$html .= $this->wpoa_login_button("github", "GitHub", $atts);
+		$html .= $this->wpoa_login_button("qilian", "Qilian", $atts);
 		$html .= $this->wpoa_login_button("itembase", "itembase", $atts);
 		$html .= $this->wpoa_login_button("reddit", "Reddit", $atts);
 		$html .= $this->wpoa_login_button("windowslive", "Windows Live", $atts);
